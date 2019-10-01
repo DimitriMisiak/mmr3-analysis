@@ -12,12 +12,8 @@ from ruo2_equation import mmr3_eq_resistance, hart_eq_resistance
 
 
 class Model_ruo2(object):
-#    
-#    def function(self, param, temp_array):
-#        a1, a2, a3 = param
-#        res_array = a2 * np.exp( (a1/temp_array)**(1./a3) )
-#        return res_array    
 
+    
     def _function_mmr3(self, param, temp_array):
         return mmr3_eq_resistance(param, temp_array)
     

@@ -70,6 +70,7 @@ def function_ruo2_inv(ruo2_key, temp_array):
     psup = param_dict[ruo2_key]['sup40']
     res_sup = mmr3_eq_resistance(psup, temp_array)
     
+#    res_array = np.where(temp_array<0.04, res_inf, res_sup)
     res_array = np.where(temp_array<0.04, res_inf, res_sup)
     
     return res_array
@@ -91,7 +92,9 @@ for rlab in ruo2_labels:
     res_array = np.array(data.data_dict[rlab])
     temp_array = np.array(data.temperature)
     
-    temp_cover = np.linspace(temp_array.min(), temp_array.max(), 1000)
+    temp_cover = 10**np.linspace(np.log10(temp_array.min()),
+                                 np.log10(temp_array.max()),
+                                 1000)
     
     line, = ax.plot(
             temp_array, res_array,
